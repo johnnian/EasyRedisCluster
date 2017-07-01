@@ -1,4 +1,4 @@
-# RedisClusterFast
+# EasyRedisCluster
 
 在平时的项目中，经常需要搭建 RedisCluster，需要各种配置，索性把一些常用的配置、执行的命令写成了一份脚本，方便快速使用。
 
@@ -38,6 +38,8 @@ export PATH REDIS_CLUSTER_HOME
 
 #### 步骤2：安装 Ruby 环境
 
+*注：MacOS 下，可以用 Homebrew 安装 Ruby*
+
 ```
 [root@ec7e56056c01 ~]# yum -y install ruby
 [root@ec7e56056c01 ~]# yum -y install rubygems
@@ -46,7 +48,9 @@ export PATH REDIS_CLUSTER_HOME
 
 #### 步骤3：配置集群
 
-1、修改每个节点的配置信息:每个节点两个redis实例
+1、修改每个节点的配置信息
+
+*注：假设需要在同一台机子上部署更多节点，可以复制一份为nodeX，修改对应的端口，nodes.conf 位置。*
 
 ```
 [root@ec7e56056c01 ~]# vi redis_cluster/node1/redis.conf
@@ -66,11 +70,15 @@ appendonly yes
 
 2、分别启动每个节点的Redis
 
+*注：请根据实际的节点，修改下 start.sh 的内容*
+
 ```
 [root@ec7e56056c01 ~]# ./redis_cluster/start.sh
 ```
 
-3、选择任意一个节点，配置集群启动脚本信息，并且执行：将下面的IP改为真实的内网IP地址
+3、选择任意一个节点，配置集群启动脚本信息，并且执行
+
+*注：将下面的IP改为真实的内网IP地址*
 
 ```
 [root@ec7e56056c01 ~]# vi redis_cluster/first_init_cluster.sh
