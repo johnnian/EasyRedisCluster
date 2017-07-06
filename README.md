@@ -59,6 +59,7 @@ cluster-enabled yes
 cluster-config-file /root/redis_cluster/node1/nodes.conf
 cluster-node-timeout 5000
 appendonly yes
+bind <内网IP>
 
 [root@ec7e56056c01 ~]# vi redis_cluster/node2/redis.conf
 port 7001
@@ -66,6 +67,8 @@ cluster-enabled yes
 cluster-config-file /root/redis_cluster/node2/nodes.conf
 cluster-node-timeout 5000
 appendonly yes
+bind <内网IP>
+
 ```
 
 2、分别启动每个节点的Redis
